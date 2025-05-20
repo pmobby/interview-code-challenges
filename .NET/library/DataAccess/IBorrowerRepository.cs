@@ -7,5 +7,11 @@ namespace OneBeyondApi.DataAccess
         public List<Borrower> GetBorrowers();
 
         public Guid AddBorrower(Borrower borrower);
+
+        public List<BorrowersAndBooksOnLoan> GetBorrowersWithBooksOnLoan();
+
+        public string ReturnLoanedBook(Book book);
+
+        public string ReserveBook(ReserveBook book);
     }
 }

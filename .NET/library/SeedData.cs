@@ -56,6 +56,12 @@ namespace OneBeyondApi
                 EmailAddress = "liana@gmail.com"
             };
 
+            var cocoJones = new Borrower
+            {
+                Name = "Coco Joans",
+                EmailAddress = "cocojoans@gmail.com"
+            };
+
             var bookOnLoanUntilToday = new BookStock {
                 Book = clayBook,
                 OnLoanTo = daveSmith,
@@ -83,6 +89,13 @@ namespace OneBeyondApi
                 LoanEndDate = null
             };
 
+            var bookNotOnLoanUntilNextMonth = new BookStock
+            {
+                Book = clayBook,
+                OnLoanTo = cocoJones,
+                LoanEndDate = DateTime.Now.AddMonths(2)
+            };
+
             using (var context = new LibraryContext())
             {
                 context.Authors.Add(ernestMonkjack);
@@ -100,6 +113,7 @@ namespace OneBeyondApi
                 context.Catalogue.Add(bookOnLoanUntilToday);
                 context.Catalogue.Add(bookNotOnLoan);
                 context.Catalogue.Add(bookOnLoanUntilNextWeek);
+                context.Catalogue.Add(bookNotOnLoanUntilNextMonth);
                 context.Catalogue.Add(rustBookStock);
 
                 context.SaveChanges();
